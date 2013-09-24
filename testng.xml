@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+  
+<suite name="Mail.ru suite" parallel="tests" thread-count="2" >
+  
+  <test name="Chrome test" >
+  	<parameter name="browser" value="chrome"/>
+    <classes>
+       <class name="test.java.TestConvertor"/>
+    </classes>
+  </test>
+ 
+  <test name="Firefox test">
+  	<parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="test.java.TestConvertor"/>
+    </classes>
+  </test>
+  
+</suite>
