@@ -27,12 +27,12 @@ public class ConvertorPage
     private final By revertLocator = 		By.id("change_conv");
     private final By courseLocator = 		By.xpath("//a[contains(.,'По курсу ЦБ РФ ')]");
     
-    private final By inputLocator	=		By.xpath("//span[@id='icode']");
+    private final By toLocator	=			By.xpath("//span[@id='ocode']");
     private final By toRublesLocator = 		By.xpath("//ul[@id='select_second']//span[contains(@data-code, 'RUB')]");
     private final By toUsdLocator =    		By.xpath("//ul[@id='select_second']//span[contains(@data-code, 'USD')]");
     private final By toEuroLocator =    	By.xpath("//ul[@id='select_second']//span[contains(@data-code, 'EUR')]");
 	
-    private final By outputLocator	=		By.xpath("//span[@id='ocode']");
+    private final By fromLocator	=		By.xpath("//span[@id='icode']");
     private final By fromRublesLocator =	By.xpath("//ul[@id='select_first']//span[contains(@data-code, 'RUB')]");
     private final By fromUsdLocator =    	By.xpath("//ul[@id='select_first']//span[contains(@data-code, 'USD')]");
     private final By fromEuroLocator =    	By.xpath("//ul[@id='select_first']//span[contains(@data-code, 'EUR')]");
@@ -64,32 +64,32 @@ public class ConvertorPage
 	
 	public void ConvertToRubles()
 	{
-		ClickElement(outputLocator);
+		ClickElement(toLocator);
 		ClickElement(toRublesLocator);
 	}
 	
 	public void ConvertToUsd()
 	{
-		ClickElement(outputLocator);
+		ClickElement(toLocator);
 		ClickElement(toUsdLocator);
 	}
 	
 	public void ConvertToEuro()
 	{
-		ClickElement(outputLocator);
+		ClickElement(toLocator);
 		ClickElement(toEuroLocator);
 	}
 	
 	public void ConvertFromRubles(){
-		ClickElement(inputLocator);
+		ClickElement(fromLocator);
 		ClickElement(fromRublesLocator);
 	}
 	public void ConvertFromUsd(){
-		ClickElement(inputLocator);
+		ClickElement(fromLocator);
 		ClickElement(fromUsdLocator);
 	}
 	public void ConvertFromEuro(){
-		ClickElement(inputLocator);
+		ClickElement(fromLocator);
 		ClickElement(fromEuroLocator);
 	}
 	
@@ -109,6 +109,24 @@ public class ConvertorPage
 		}
 		
 		return number;
+	}
+	
+	public String GetFrom()
+	{
+		WebElement element = driver.findElement(fromLocator);
+		return element.getText();
+	}
+	
+	public String GetTo()
+	{
+		WebElement element = driver.findElement(toLocator);
+		return element.getText();
+	}
+	
+	public String GetInputColorStyle()
+	{
+		WebElement element = driver.findElement(inputFormLocator);
+		return element.getAttribute("style");
 	}
 	
 	public void Revert()
